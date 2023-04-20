@@ -1,28 +1,46 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Packages.Rider.Editor.UnitTesting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody2D playerRb;
+    private Rigidbody2D rb;
+    private Animator anim;
+    private SpriteRenderer sprite;
+    
+    private float dirX = 0f;
+    [SerializeField] private float moveSpeed = 7f;
+    [SerializeField] private float jumpForce = 14f;
+    
     // Start is called before the first frame update
     void Start()
     {
-        playerRb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        dirX = Input.GetAxisRaw("Horizontal");
+        rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+
+        if (Input.GetButtonDown("Jump")) {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        }
         
+        UpdateAnimationState();
     }
 
-    private void FixedUpdate()
+    private void UpdateAnimationState()
     {
-        if (Input.GetKeyDown("space")) {
-            playerRb.velocity = new Vector3(0, 14, 0);
+        if (dirX > 0f) {
+            anim.SetBool("running", true);
+            sprite.flipX = false;
+        } else if (dirX < 0f) {
+            anim.SetBool("running", true);
+            sprite.flipX = true;
+        } else {
+            anim.SetBool("running", false);
         }
     }
 }
