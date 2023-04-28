@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
             jumpSourceEffect.Play();
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
-        
+
         UpdateAnimationState();
     }
 
