@@ -12,8 +12,9 @@ public class PlayerMovement : MonoBehaviour
     private float dirX = 0f;
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 14f;
+    private bool doubleJumped = false;
     
-    private enum MovementState { idle, running, jumping, falling }  
+    private enum MovementState { idle, running, jumping, falling, doubleJumping }  
     [SerializeField] private MovementState state = MovementState.idle;
 
     [SerializeField] private AudioSource jumpSourceEffect;
@@ -33,9 +34,18 @@ public class PlayerMovement : MonoBehaviour
         dirX = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
 
-        if (Input.GetButtonDown("Jump") && IsGrounded()) {
-            jumpSourceEffect.Play();
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        if (Input.GetButtonDown("Jump")) {
+            if (IsGrounded()) {
+                doubleJumped = false;
+                jumpSourceEffect.Play();
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            } else if (!doubleJumped) {
+                {
+                    doubleJumped = true;
+                    jumpSourceEffect.Play();
+                    rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                }
+            }
         }
 
         UpdateAnimationState();
@@ -54,7 +64,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (rb.velocity.y > .1f) {
-            state = MovementState.jumping;
+            if (doubleJumped) {
+                state = MovementState.doubleJumping;
+            } else {
+                
+                state = MovementState.jumping;
+            }
         } else if (rb.velocity.y < -.1f) {
             state = MovementState.falling;
         }
@@ -63,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsGrounded()
     {
+        if (rb.velocity.y != 0) return false;
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
 }

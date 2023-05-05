@@ -927,7 +927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0f47586b703204789cb3c37d88fb7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1672142862}
+  player: {fileID: 845156503}
 --- !u!4 &569612847 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2874162395834838829, guid: 6fdd779bb757cd044983dcec4c2ef0ea, type: 3}
@@ -1222,6 +1222,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2874162395834838829, guid: 6fdd779bb757cd044983dcec4c2ef0ea, type: 3}
   m_PrefabInstance: {fileID: 1807956558}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &845156503 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8234199004210899093, guid: b692daf3708b6d549a9796c72ab8100d, type: 3}
+  m_PrefabInstance: {fileID: 1672142861}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &860582010 stripped
 Transform:
@@ -38500,11 +38505,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b692daf3708b6d549a9796c72ab8100d, type: 3}
---- !u!4 &1672142862 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8234199004210899093, guid: b692daf3708b6d549a9796c72ab8100d, type: 3}
-  m_PrefabInstance: {fileID: 1672142861}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1680678128
 GameObject:
   m_ObjectHideFlags: 0
@@ -38909,6 +38909,14 @@ PrefabInstance:
     - target: {fileID: 2874162395834838830, guid: 6fdd779bb757cd044983dcec4c2ef0ea, type: 3}
       propertyPath: m_Name
       value: Spikes (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2874162395834838831, guid: 6fdd779bb757cd044983dcec4c2ef0ea, type: 3}
+      propertyPath: m_Size.x
+      value: 0.86494255
+      objectReference: {fileID: 0}
+    - target: {fileID: 2874162395834838831, guid: 6fdd779bb757cd044983dcec4c2ef0ea, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.022509575
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fdd779bb757cd044983dcec4c2ef0ea, type: 3}
