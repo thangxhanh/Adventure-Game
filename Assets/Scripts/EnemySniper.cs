@@ -17,7 +17,6 @@ public class EnemySniper : MonoBehaviour
     private void Fire()
     {
         var b = Instantiate(bullet);
-        Debug.Log(transform.position.x);
         b.transform.position = transform.position + offset * (isRight ? 1 : -1);
         b.Setup((isRight ? 1 : -1) * transform.right.normalized);
     }

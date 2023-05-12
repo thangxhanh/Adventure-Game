@@ -14,10 +14,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 14f;
     private bool doubleJumped = false;
     
-    private enum MovementState { idle, running, jumping, falling, doubleJumping }  
+    private enum MovementState { idle, running, jumping, falling, doubleJumping }
     [SerializeField] private MovementState state = MovementState.idle;
 
-    [SerializeField] private AudioSource jumpSourceEffect;
+    [SerializeField] private AudioSource soundSfx;
+    [SerializeField] private AudioClip jump;
     
     // Start is called before the first frame update
     void Start()
@@ -37,12 +38,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump")) {
             if (IsGrounded()) {
                 doubleJumped = false;
-                jumpSourceEffect.Play();
+                soundSfx.PlayOneShot(jump);
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             } else if (!doubleJumped) {
                 {
                     doubleJumped = true;
-                    jumpSourceEffect.Play();
+                    soundSfx.PlayOneShot(jump);
                     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 }
             }

@@ -1,13 +1,19 @@
+using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Slider = UnityEngine.UI.Slider;
+using Toggle = UnityEngine.UI.Toggle;
 
 public class OptionData : MonoBehaviour
 {
     public static OptionData Instance { get; private set; }
 
     public float musicVolume { get; private set; }
-    
+    public string skinName { get; private set; }
+
     [SerializeField] private Slider sliderVolume;
+    [SerializeField] private Toggle[] skins;
 
     private void Awake() 
     { 
@@ -25,8 +31,37 @@ public class OptionData : MonoBehaviour
     void Start()
     {
         musicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
+        sliderVolume.value = musicVolume;
+
+        skinName = PlayerPrefs.GetString("SkinName", "VirtualGuy");
+        foreach (Toggle skin in skins) {
+            skin.onValueChanged.AddListener((bool on) =>
+            {
+                if (on) {
+                    SelectSkin(skin.gameObject.name);
+                }
+            });
+
+            if (skin.gameObject.name == skinName) {
+                skin.isOn = true;
+            }
+        }
     }
 
+    public void SelectSkin(string name)
+    {
+        skinName = name;
+        foreach (Toggle skin in skins) {
+            if (skin.gameObject.name == name) {
+                skin.interactable = false;
+            } else {
+                skin.interactable = true;
+            }
+        }
+        
+        PlayerPrefs.SetString("SkinName", skinName);
+    }
+    
     public void SetVolume()
     {
         musicVolume = sliderVolume.value;

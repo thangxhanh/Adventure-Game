@@ -43799,6 +43799,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2665538624702324957, guid: b692daf3708b6d549a9796c72ab8100d, type: 3}
+      propertyPath: m_Name
+      value: Sound Sfx
+      objectReference: {fileID: 0}
     - target: {fileID: 8234199004210899088, guid: b692daf3708b6d549a9796c72ab8100d, type: 3}
       propertyPath: collection
       value: 
