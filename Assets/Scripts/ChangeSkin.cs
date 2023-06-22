@@ -6,8 +6,10 @@ public class ChangeSkin : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach (AnimatorOverrideController anim in anims) {
-            if (anim.name == OptionData.Instance.skinName) {
+        foreach (AnimatorOverrideController anim in anims)
+        {
+            if (anim.name == PlayerPrefs.GetString("SkinName"))
+            {
                 GetComponent<Animator>().runtimeAnimatorController = anim as RuntimeAnimatorController;
                 break;
             }

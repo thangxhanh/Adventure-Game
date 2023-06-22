@@ -15,56 +15,64 @@ public class OptionData : MonoBehaviour
     [SerializeField] private Slider sliderVolume;
     [SerializeField] private Toggle[] skins;
 
-    private void Awake() 
-    { 
+    private void Awake()
+    {
         // If there is an instance, and it's not me, delete myself.
-        if (Instance != null && Instance != this) 
-        { 
+        if (Instance != null && Instance != this)
+        {
             Destroy(this);
-        } 
-        else 
-        { 
-            Instance = this; 
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
     }
-    
+
     void Start()
     {
         musicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
         sliderVolume.value = musicVolume;
 
-        skinName = PlayerPrefs.GetString("SkinName", "VirtualGuy");
-        foreach (Toggle skin in skins) {
+        skinName = PlayerPrefs.GetString("SkinName", skins[0].gameObject.name);
+        foreach (Toggle skin in skins)
+        {
             skin.onValueChanged.AddListener((bool on) =>
             {
-                if (on) {
+                if (on)
+                {
                     SelectSkin(skin.gameObject.name);
+                    UnityEngine.Debug.Log(skin.gameObject.name);
                 }
             });
 
-            if (skin.gameObject.name == skinName) {
-                skin.isOn = true;
-            }
+            skin.isOn = (skin.gameObject.name == skinName);
         }
     }
 
     public void SelectSkin(string name)
     {
         skinName = name;
-        foreach (Toggle skin in skins) {
-            if (skin.gameObject.name == name) {
+        foreach (Toggle skin in skins)
+        {
+            if (skin.gameObject.name == name)
+            {
                 skin.interactable = false;
-            } else {
+            }
+            else
+            {
                 skin.interactable = true;
             }
         }
-        
         PlayerPrefs.SetString("SkinName", skinName);
+        PlayerPrefs.Save(); // Save the PlayerPrefs to persist the data
     }
-    
+
+
     public void SetVolume()
     {
         musicVolume = sliderVolume.value;
         PlayerPrefs.SetFloat("MusicVolume", musicVolume);
+        PlayerPrefs.Save();
     }
 }

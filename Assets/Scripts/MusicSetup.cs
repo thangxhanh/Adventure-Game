@@ -10,7 +10,10 @@ public class MusicSetup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        setVolume(OptionData.Instance.musicVolume);
+        if (PlayerPrefs.GetFloat("MusicVolume") != null)
+        {
+            setVolume(PlayerPrefs.GetFloat("MusicVolume"));
+        }
     }
 
     //Set volume for level
