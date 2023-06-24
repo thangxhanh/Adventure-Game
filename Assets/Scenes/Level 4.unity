@@ -54492,7 +54492,7 @@ PrefabInstance:
     - target: {fileID: 6436014369819443037, guid: 03b8e30297043e94c902e0f9911c53cb, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1646102072}
     - target: {fileID: 6436014369819443038, guid: 03b8e30297043e94c902e0f9911c53cb, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -66855,6 +66855,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fdd779bb757cd044983dcec4c2ef0ea, type: 3}
+--- !u!4 &1646102072 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1947834544430527187, guid: b692daf3708b6d549a9796c72ab8100d, type: 3}
+  m_PrefabInstance: {fileID: 1672142861}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1668141497
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66927,6 +66932,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 7.3
       objectReference: {fileID: 0}
+    - target: {fileID: 3758677099004728198, guid: b692daf3708b6d549a9796c72ab8100d, type: 3}
+      propertyPath: cherriesText
+      value: 
+      objectReference: {fileID: 1611730137}
     - target: {fileID: 8234199004210899093, guid: b692daf3708b6d549a9796c72ab8100d, type: 3}
       propertyPath: m_RootOrder
       value: 7
