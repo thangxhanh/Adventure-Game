@@ -1495,6 +1495,16 @@ PrefabInstance:
       objectReference: {fileID: 1611730137}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b692daf3708b6d549a9796c72ab8100d, type: 3}
+--- !u!82 &1463543811 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3466746323363151013, guid: b692daf3708b6d549a9796c72ab8100d, type: 3}
+  m_PrefabInstance: {fileID: 1463543810}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1463543812 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2746716894056131268, guid: b692daf3708b6d549a9796c72ab8100d, type: 3}
+  m_PrefabInstance: {fileID: 1463543810}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1502974605
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2081,6 +2091,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6436014369819443034, guid: 03b8e30297043e94c902e0f9911c53cb, type: 3}
+      propertyPath: soundSfx
+      value: 
+      objectReference: {fileID: 1463543811}
+    - target: {fileID: 6436014369819443034, guid: 03b8e30297043e94c902e0f9911c53cb, type: 3}
+      propertyPath: sourceBackground
+      value: 
+      objectReference: {fileID: 1463543812}
     - target: {fileID: 6436014369819443035, guid: 03b8e30297043e94c902e0f9911c53cb, type: 3}
       propertyPath: m_Name
       value: Main Camera
